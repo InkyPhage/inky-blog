@@ -1,0 +1,29 @@
+
+title: Inky Phage
+email: inkyPhage@gmail.com
+description: >
+  An amateur creative writing blog written by a CS student and avid D&D player.
+  I hope to post Chapters of Novels, Short Stories, Poetry,
+  campaign ideas/settings, and possibly even some basic games (CS has gotta go somewhere!)
+baseurl: ""
+url: ""
+github_username:    InkyPhage
+twitter_username:   InkyPhage
+
+exclude:  [client_secrets.json, lab.py, settings]
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+# exclude:
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
