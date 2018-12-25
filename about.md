@@ -5,3 +5,6 @@ permalink: /about/
 ---
 
 {{ site.description }}
+
+
+{% include LICENCE %}
