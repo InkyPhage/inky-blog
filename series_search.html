@@ -1,0 +1,51 @@
+---
+layout: page
+title: Search
+permalink: /search/
+---
+
+<script src="https://unpkg.com/lunr/lunr.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<input type="text" id="search" autocomplete="off" autofocus>
+<ul id="results">
+</ul>
+
+<script type="application/javascript">
+ $(document).ready(function() {
+  'use strict';
+  var index, refrence;
+  $.getJSON("/search_index.json", function(response) {
+   index = response.index;
+   refrence = response.refrence;
+   var idx = lunr(function() {
+    this.field("title", {"boost": 5});
+    this.field("chapter");
+    this.field("series", {"boost": 10});
+    this.ref("path");
+
+    for(var i of index){
+     this.add(i);
+    }
+   });
+   $("input#search").keyup(function(event){
+    if ($(this).val.length !== 0) {
+     var results = idx.search($(this).val());
+     var render = "";
+     for(var result of results){
+      let title = refrence[result.ref].title;
+      let series = refrence[result.ref].series;
+      let chapter = refrence[result.ref].chapter;
+      if(title == null) {
+       render += "\n<li><a href='/"+ result.ref +"'>" + series + " - " + chapter +"</a></li>";
+      } else {
+       render += "\n<li><a href='/"+ result.ref +"'>" + series + " - " + chapter + " - " + title + "</a></li>";
+      }
+
+     }
+     $("ul#results").html(render);
+    }
+   })
+  });
+ });
+</script>

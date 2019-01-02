@@ -1,0 +1,29 @@
+
+input#search {
+ background-color: $background-color;
+ color: $grey-color;
+ border-style: none none none solid;
+ font-size: 18pt;
+ display: inline-block;;
+}
+
+ul#results {
+ background-color: $background-color;
+
+ > li {
+  list-style: none;
+  opacity: .5;
+  animation: .5s;
+
+  &:hover {
+   opacity: 1;
+   transition: 1s;
+  }
+
+   > a {
+   font-size: 18pt;
+   color: $grey-color;
+   text-decoration: none;
+  }
+ }
+}
