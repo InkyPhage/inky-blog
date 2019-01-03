@@ -4,8 +4,8 @@ title: Search
 permalink: /search/
 ---
 
-<script src="https://unpkg.com/lunr/lunr.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="/js/lunr.js"></script>
+<script src="/js/jquery-3.3.1.min.js"></script>
 
 <input type="text" id="search" autocomplete="off" autofocus>
 <ul id="results">
@@ -37,9 +37,9 @@ permalink: /search/
       let series = refrence[result.ref].series;
       let chapter = refrence[result.ref].chapter;
       if(title == null) {
-       render += "\n<li><a href='/"+ result.ref +"'>" + series + " - " + chapter +"</a></li>";
+       render += "\n<li><a href='/"+ result.ref +"'>" + series + " - " + chapter +"</br><img id='cover' src='/series/" + series + "/cover.png'></img></a></li>";
       } else {
-       render += "\n<li><a href='/"+ result.ref +"'>" + series + " - " + chapter + " - " + title + "</a></li>";
+       render += "\n<li><a href='/"+ result.ref +"'>" + series + " - " + chapter + " - " + title + "</br><img id='cover' src='/series/" + series + "/cover.png'></img></a></li>";
       }
 
      }

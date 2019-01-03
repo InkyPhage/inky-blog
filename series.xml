@@ -1,0 +1,18 @@
+---
+layout: none
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ site.name | xml_escape }}</title>
+    <description>{{ site.description | xml_escape }}</description>
+    <link>{{ site.url }}</link>
+    <atom:link href="{{ site.url }}/series.xml" rel="self" type="application/rss+xml" />
+    {% for chapter in site.data.search_index limit:10 %}
+      <item>
+        <title>{{ chapter.title | xml_escape }}</title>
+        <link>{{ site.url }}/{{ chapter.path }}</link>
+      </item>
+    {% endfor %}
+  </channel>
+</rss>
