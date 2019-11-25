@@ -14,6 +14,13 @@ permalink: /search/
 <script type="application/javascript">
  $(document).ready(function() {
   'use strict';
+  function sortByPath(list) {
+   return list.sort(function(a, b) {
+    let x = a.ref;
+    let y = b.ref;
+    return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+   });
+  }
   var index, refrence;
   $.getJSON("/search_index.json", function(response) {
    index = response.index;
@@ -30,7 +37,7 @@ permalink: /search/
    });
    $("input#search").keyup(function(event){
     if ($(this).val.length !== 0) {
-     var results = idx.search($(this).val());
+     var results = sortByPath(idx.search($(this).val()));
      var render = "";
      for(var result of results){
       let title = refrence[result.ref].title;
